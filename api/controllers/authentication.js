@@ -19,7 +19,7 @@ module.exports.login = (req, res) => {
 // If Passport throws/catches an error
         if (err) {
             console.log(err);
-            res.status(200).send('testets');
+            res.status(404).send(err);
             return;
         }
 // If a user is found

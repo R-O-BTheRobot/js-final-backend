@@ -2,6 +2,7 @@ require('./api/models/db');
 require('./api/config/passport');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
+const bodyParser = require('body-parser')
 const express = require('express');
 const logger = require('morgan');
 const passport = require('passport');
@@ -12,6 +13,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(logger('dev'));
+app.use(bodyParser({limit: '10mb'}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

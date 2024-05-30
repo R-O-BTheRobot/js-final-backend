@@ -1,4 +1,5 @@
 require('./users');
+require('./images');
 const mongoose = require('mongoose');
 const dbURI = 'mongodb://localhost:27017/js-final';
 mongoose.connect(dbURI, {});

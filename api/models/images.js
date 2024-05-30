@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+//const jwt = require('jsonwebtoken');
 const imageSchema = new mongoose.Schema({
     userId: {
         type: String,
@@ -16,7 +15,7 @@ const imageSchema = new mongoose.Schema({
     }
 });
 
-imageSchema.methods.save = function() { //TO-DO
+/*imageSchema.methods.save = function() { //TO-DO
     const expiry = new Date();
     expiry.setDate(expiry.getDate() + 7);
     return jwt.sign(
@@ -28,5 +27,5 @@ imageSchema.methods.save = function() { //TO-DO
         },
         'secretKey'
     );
-};
-mongoose.model('user', userSchema);
+};*/
+mongoose.model('image', imageSchema);
