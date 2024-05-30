@@ -4,6 +4,7 @@ module.exports.upload = (req, res) => {
     const image = new Image();
     image.userId = req.body.userId;
     image.title = req.body.title;
+    image.description = req.body.description;
     image.imageBase64 = req.body.imageBase64;
     image.save().then(() => {
         res.status(200).json(image._id);

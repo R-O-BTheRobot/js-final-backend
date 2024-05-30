@@ -9,6 +9,9 @@ const imageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String
+    },
     imageBase64: {
         type: String,
         required: true
