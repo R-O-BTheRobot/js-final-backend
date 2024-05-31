@@ -15,8 +15,8 @@ router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 router.put('/upload', ctrlImage.upload);
-router.patch('/update', ctrlImage.upload);
-router.delete('/delete', ctrlImage.upload);
+router.patch('/update', ctrlImage.update);
+router.delete('/delete', ctrlImage.delete);
 router.get('/image/', ctrlImage.fetchAll);
 router.get('/image/:id', ctrlImage.fetch);
 
