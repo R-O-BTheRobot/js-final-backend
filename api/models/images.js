@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 //const jwt = require('jsonwebtoken');
 const imageSchema = new mongoose.Schema({
+    id:{
+        type:Number,
+        required:true,
+        unique:true
+    },
     userId: {
         type: String,
         required: true

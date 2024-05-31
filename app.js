@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.all('*', function(req, res, next) { //CORS bypass
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Methods', 'PUT, PATCH, GET, POST, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
