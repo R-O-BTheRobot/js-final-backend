@@ -21,9 +21,11 @@ module.exports.upload = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
+    console.log(req);
+    if (!req.body.title) throw new Error('Title is required');
     jsonUpdate = {
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
     }
     Image.findOneAndUpdate({'id':req.body.id}, jsonUpdate).then(() => {
         res.status(200).json(req.body.id);

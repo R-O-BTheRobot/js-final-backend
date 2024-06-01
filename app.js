@@ -1,5 +1,6 @@
 require('./api/models/db');
 require('./api/config/passport');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const bodyParser = require('body-parser')
@@ -10,6 +11,10 @@ const path = require('path');
 const routesApi = require('./api/routes/index');
 const app = express();
 // view engine setup
+app.use(cors({
+  methods: '*',
+  origin: '*'
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(logger('dev'));
@@ -19,12 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
-app.all('*', function(req, res, next) { //CORS bypass
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, PATCH, GET, POST, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+/*app.all('*', function(req, res, next) { //CORS bypass
+  res.headers['Access-Control-Allow-Origin'] = '*';
+  res.headers['Access-Control-Allow-Methods'] = '*';
+  res.headers['Access-Control-Allow-Headers'] = '*';
+  //res.header('Access-Control-Allow-Methods', '*');
+  //res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
-});
+});*/
 app.use("/api", routesApi);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
